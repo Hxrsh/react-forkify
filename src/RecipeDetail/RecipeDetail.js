@@ -27,6 +27,7 @@ const RecipeDetail = (props) => {
       window.removeEventListener("hashchange", hashChangeHandler);
     };
   }, []);
+
   // useEffect(() => {
   //   if (!recipeID) {
   //     return;
