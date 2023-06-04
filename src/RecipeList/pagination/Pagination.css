@@ -1,0 +1,30 @@
+.pagination_wrap {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+  padding: 4rem 2rem;
+}
+.pag_btn {
+  border: none;
+  padding: 1rem 4rem;
+  border-radius: 10rem;
+  background-color: #f9f5f3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.pag_btn span {
+  color: #f48982;
+  font-weight: 700;
+}
+.pag_btn:hover {
+  background-color: rgb(241, 235, 235);
+}
+.pagination_arr {
+  height: 2rem;
+}
+.pag_hide {
+  visibility: 0;
+  opacity: 0;
+}

@@ -1,0 +1,56 @@
+.search__results {
+  padding: 3rem 0;
+  color: inherit;
+}
+.recipe_list {
+  display: list-item;
+  padding: 0;
+  list-style: none;
+  max-height: 110rem;
+  overflow: auto;
+}
+.recipe {
+  padding: 2rem 3rem;
+  transition: 0.2s;
+}
+.recipe:hover {
+  transform: translateY(-2px);
+  background-color: rgb(241, 235, 235);
+}
+.recipe_link {
+  text-decoration: none;
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+.recipe_img_wrap {
+  background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
+  border-radius: 50%;
+}
+.list_image {
+  border-radius: 50%;
+  height: 6rem;
+  width: 6rem;
+  opacity: 0.6;
+}
+.list_recipe_wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.list_title {
+  max-width: 25rem;
+  font-size: 1.45rem;
+  color: #f48982;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.list_publisher {
+  font-size: 1.15rem;
+  text-transform: uppercase;
+  color: rgb(107, 105, 105);
+  letter-spacing: 1px;
+}

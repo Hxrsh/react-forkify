@@ -1,0 +1,76 @@
+.header {
+  grid-area: header;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f9f5f3;
+  border-radius: 1rem 1rem 0 0;
+}
+.header__logo {
+  height: 6rem;
+  margin-left: 4rem;
+  display: block;
+}
+.searchbar {
+  display: flex;
+  border-radius: 10rem;
+  background-color: white;
+}
+.search_btn {
+  background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
+  border-radius: 10rem;
+  font-size: 2rem;
+  display: flex;
+  border: none;
+  padding: 1.5rem 4rem;
+  color: white;
+  gap: 1.5rem;
+}
+.search_btn:hover {
+  transform: scale(1.05);
+}
+.search_btn:active {
+  transform: scale(1);
+}
+.search_logo {
+  height: 2rem;
+}
+.search__field {
+  border: none;
+  padding: 1.5rem 4rem;
+  width: 25rem;
+  font-size: 1.7rem;
+  border-radius: 10rem;
+  outline: none;
+}
+
+.utility {
+  margin-right: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+.add_recipe,
+.bookmarks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  height: 8rem;
+  padding: 1rem 1rem;
+  padding-right: 1.5rem;
+}
+.add_recipe:hover,
+.bookmarks:hover {
+  background-color: rgb(241, 235, 235);
+}
+.add_recipe_logo {
+  height: 4rem;
+}
+
+.bookmarks_logo {
+  height: 4rem;
+}
