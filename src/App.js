@@ -7,13 +7,13 @@ import RecipeDetail from "./RecipeDetail/RecipeDetail";
 function App() {
   console.log("rendered App");
   const [liftedSearchVal, setLiftedSearchVal] = useState("");
-  const onLiftvalue = (value) => {
-    setLiftedSearchVal(value);
-  };
 
   return (
     <div className="wrap">
-      <Navbar onSearchVal={onLiftvalue}></Navbar>
+      <Navbar
+        searchVal={liftedSearchVal}
+        onSearchVal={setLiftedSearchVal}
+      ></Navbar>
       <RecipeList onSearchValRec={liftedSearchVal}></RecipeList>
       <RecipeDetail></RecipeDetail>
     </div>

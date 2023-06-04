@@ -7,23 +7,15 @@ import React, { useState, useEffect } from "react";
 
 const Navbar = (props) => {
   console.log("rendered Navbar");
-  const [inputSearchValue, setInputSearchValue] = useState("");
-  const onSubmitFormHAndler = (e) => {
-    e.preventDefault();
-  };
   const onInputHandler = (e) => {
     const searchKey = document.getElementById("searched_keyword").value;
     if (!searchKey) return;
-    setInputSearchValue(searchKey);
-    document.getElementById("searched_keyword").value = "";
+    props.onSearchVal(searchKey);
   };
-  useEffect(() => {
-    props.onSearchVal(inputSearchValue);
-  }, [inputSearchValue]);
   return (
     <div className="header">
       <img src={logo} className="header__logo" alt="forkify logo" />
-      <form className="searchbar" onSubmit={onSubmitFormHAndler}>
+      <form className="searchbar" onSubmit={(e) => e.preventDefault()}>
         <input
           type="text"
           className="search__field"

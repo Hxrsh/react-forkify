@@ -12,11 +12,14 @@ import { fetchRecipeDetail } from "../Helperfunctions/fetchData";
 const RecipeDetail = (props) => {
   console.log("rendered recDetail");
   const [recipeDetailData, setRecipeDetailData] = useState("");
-  const [recipeID, setRecipeID] = useState("");
-  const initialRenderCall = useRef("0");
+  // const [recipeID, setRecipeID] = useState("");
   const hashChangeHandler = (e) => {
     const hashChangedValue = e.newURL.split("#")[1];
-    setRecipeID(hashChangedValue);
+    if (!hashChangedValue) {
+      return;
+    }
+    fetchRecipeDetail(hashChangedValue, setRecipeDetailData);
+    // setRecipeID(hashChangedValue);
   };
   useEffect(() => {
     window.addEventListener("hashchange", hashChangeHandler);
@@ -24,13 +27,12 @@ const RecipeDetail = (props) => {
       window.removeEventListener("hashchange", hashChangeHandler);
     };
   }, []);
-  useEffect(() => {
-    if (initialRenderCall.current < 2) {
-      initialRenderCall.current++;
-    } else {
-      fetchRecipeDetail(recipeID, setRecipeDetailData);
-    }
-  }, [recipeID]);
+  // useEffect(() => {
+  //   if (!recipeID) {
+  //     return;
+  //   }
+  //   fetchRecipeDetail(recipeID, setRecipeDetailData);
+  // }, [recipeID]);
 
   if (!recipeDetailData) return <div>No data</div>;
 
