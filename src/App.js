@@ -10,10 +10,7 @@ function App() {
 
   return (
     <div className="wrap">
-      <Navbar
-        searchVal={liftedSearchVal}
-        onSearchVal={setLiftedSearchVal}
-      ></Navbar>
+      <Navbar onSearchVal={setLiftedSearchVal}></Navbar>
       <RecipeList onSearchValRec={liftedSearchVal}></RecipeList>
       <RecipeDetail></RecipeDetail>
     </div>
