@@ -3,6 +3,7 @@ import pag_r from "../../img/right-arrow-pag.svg";
 import pag_l from "../../img/left-arrow-pag1.svg";
 import { useEffect, useState } from "react";
 const Pagination = (props) => {
+  console.log("render pagination");
   const [currPage, setCurrPage] = useState(1);
   const itemsDisplayed = 9;
   const totalPages = Math.ceil(props.onListLoadDataLength / itemsDisplayed);
@@ -16,14 +17,14 @@ const Pagination = (props) => {
     nextBtnStyle = " pag_hide";
   }
 
-  const pagLogic = (currPage) => {
+  const paginationRange = (currPage) => {
     const start = (currPage - 1) * itemsDisplayed;
     const end = currPage * itemsDisplayed;
     return { start: start, end: end };
   };
 
   useEffect(() => {
-    props.onPaginationClicked(pagLogic(currPage));
+    props.onPaginationClicked(paginationRange(currPage));
   }, [currPage]);
 
   return (

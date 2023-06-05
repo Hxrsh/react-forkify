@@ -3,7 +3,6 @@ import logo from "../img/logo.png";
 import search_logo from "../img/mag-glass.svg";
 import bookmark from "../img/bookmark.svg";
 import note from "../img/note.svg";
-import React, { useState, useEffect } from "react";
 
 const Navbar = (props) => {
   console.log("rendered Navbar");

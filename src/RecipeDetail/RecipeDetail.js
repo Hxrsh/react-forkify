@@ -23,6 +23,7 @@ const RecipeDetail = (props) => {
   };
   useEffect(() => {
     window.addEventListener("hashchange", hashChangeHandler);
+
     return () => {
       window.removeEventListener("hashchange", hashChangeHandler);
     };
