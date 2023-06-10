@@ -12,15 +12,24 @@ import { fetchRecipeDetail } from "../Helperfunctions/fetchData";
 const RecipeDetail = (props) => {
   console.log("rendered recDetail");
   const [recipeDetailData, setRecipeDetailData] = useState("");
-  // const [recipeID, setRecipeID] = useState("");
+  const [servingQuan, setServingQuan] = useState("");
   const hashChangeHandler = (e) => {
     const hashChangedValue = e.newURL.split("#")[1];
     if (!hashChangedValue) {
       return;
     }
     fetchRecipeDetail(hashChangedValue, setRecipeDetailData);
-    // setRecipeID(hashChangedValue);
+
+    console.log("fetch detail working");
   };
+  const servingCalculator = (arrElquan, numberServe) => {
+    const newServing = (arrElquan * numberServe) / recipeDetailData.servings;
+    return newServing;
+  };
+  useEffect(() => {
+    setServingQuan(recipeDetailData?.servings);
+  }, [recipeDetailData]);
+
   useEffect(() => {
     window.addEventListener("hashchange", hashChangeHandler);
 
@@ -28,13 +37,6 @@ const RecipeDetail = (props) => {
       window.removeEventListener("hashchange", hashChangeHandler);
     };
   }, []);
-
-  // useEffect(() => {
-  //   if (!recipeID) {
-  //     return;
-  //   }
-  //   fetchRecipeDetail(recipeID, setRecipeDetailData);
-  // }, [recipeID]);
 
   if (!recipeDetailData) return <div>No data</div>;
 
@@ -54,10 +56,23 @@ const RecipeDetail = (props) => {
           </div>
           <div className="recipe_serving">
             <img src={users} className="time_logo" />
-            <span>{recipeDetailData.servings} Servings</span>
+            <span>{servingQuan} Servings</span>
             <div className="user_count">
-              <img src={minus} className="users_plus counter" />
-              <img src={plus} className="users_minus counter" />
+              <img
+                src={minus}
+                className="users_minus counter"
+                onClick={() => {
+                  if (servingQuan === 1) return;
+                  setServingQuan(servingQuan - 1);
+                }}
+              />
+              <img
+                src={plus}
+                className="users_plus counter"
+                onClick={() => {
+                  setServingQuan(servingQuan + 1);
+                }}
+              />
             </div>
           </div>
         </div>
@@ -77,7 +92,11 @@ const RecipeDetail = (props) => {
                     className="ingredient_check"
                     alt="tick mark"
                   />
-                  {el.quantity && <div className="quantity">{el.quantity}</div>}
+                  {el.quantity && servingQuan && (
+                    <div className="quantity">
+                      {servingCalculator(el.quantity, servingQuan)}
+                    </div>
+                  )}
                   {el.unit && <span>{el.unit}</span>}
                   {el.description}
                 </li>
