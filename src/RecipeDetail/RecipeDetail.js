@@ -26,8 +26,14 @@ const RecipeDetail = (props) => {
     const newServing = (arrElquan * numberServe) / recipeDetailData.servings;
     return newServing;
   };
+
+  const onBookmarkHandler = () => {
+    console.log("bookmarked");
+    props.onBookmark(recipeDetailData);
+  };
   useEffect(() => {
     setServingQuan(recipeDetailData?.servings);
+    console.log(recipeDetailData);
   }, [recipeDetailData]);
 
   useEffect(() => {
@@ -76,7 +82,7 @@ const RecipeDetail = (props) => {
             </div>
           </div>
         </div>
-        <button className="recipe_bookmark">
+        <button className="recipe_bookmark" onClick={onBookmarkHandler}>
           <img src={bookmarker} className="bookmarker_logo" />
         </button>
       </div>

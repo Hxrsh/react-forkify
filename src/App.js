@@ -7,12 +7,16 @@ import RecipeDetail from "./RecipeDetail/RecipeDetail";
 function App() {
   console.log("rendered App");
   const [liftedSearchVal, setLiftedSearchVal] = useState("");
+  const [liftedBookmark, setLiftedBookmark] = useState("");
 
   return (
     <div className="wrap">
-      <Navbar onSearchVal={setLiftedSearchVal}></Navbar>
+      <Navbar
+        onSearchVal={setLiftedSearchVal}
+        onBookmarkRec={liftedBookmark}
+      ></Navbar>
       <RecipeList onSearchValRec={liftedSearchVal}></RecipeList>
-      <RecipeDetail></RecipeDetail>
+      <RecipeDetail onBookmark={setLiftedBookmark}></RecipeDetail>
     </div>
   );
 }
