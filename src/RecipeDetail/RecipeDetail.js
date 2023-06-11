@@ -13,6 +13,8 @@ const RecipeDetail = (props) => {
   console.log("rendered recDetail");
   const [recipeDetailData, setRecipeDetailData] = useState("");
   const [servingQuan, setServingQuan] = useState("");
+  const [toggle, setToggle] = useState(false);
+  let bookmarkStyle = "recipe_bookmark";
   const hashChangeHandler = (e) => {
     const hashChangedValue = e.newURL.split("#")[1];
     if (!hashChangedValue) {
@@ -26,14 +28,26 @@ const RecipeDetail = (props) => {
     const newServing = (arrElquan * numberServe) / recipeDetailData.servings;
     return newServing;
   };
+  if (recipeDetailData?.is_bookmarked) {
+    bookmarkStyle += " recipe_bookmarked";
+    console.log("toggle", recipeDetailData.is_bookmarked);
+  } else {
+    bookmarkStyle = "recipe_bookmark";
+  }
 
   const onBookmarkHandler = () => {
-    console.log("bookmarked");
-    props.onBookmark(recipeDetailData);
+    // setToggle(!toggle);
+    setRecipeDetailData((prevState) => {
+      return {
+        ...prevState,
+        is_bookmarked: !prevState.is_bookmarked,
+      };
+    });
   };
   useEffect(() => {
     setServingQuan(recipeDetailData?.servings);
     console.log(recipeDetailData);
+    props.onBookmark(recipeDetailData);
   }, [recipeDetailData]);
 
   useEffect(() => {
@@ -82,7 +96,7 @@ const RecipeDetail = (props) => {
             </div>
           </div>
         </div>
-        <button className="recipe_bookmark" onClick={onBookmarkHandler}>
+        <button className={bookmarkStyle} onClick={onBookmarkHandler}>
           <img src={bookmarker} className="bookmarker_logo" />
         </button>
       </div>

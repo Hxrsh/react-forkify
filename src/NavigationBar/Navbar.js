@@ -11,8 +11,15 @@ const Navbar = (props) => {
   const [recipeBookmarkDisplayed, setRecipeBookmarkDisplayed] = useState([]);
   useEffect(() => {
     if (!bookmarkRecieved) return;
+
     setRecipeBookmarkDisplayed((prevState) => {
-      return [...prevState, bookmarkRecieved];
+      if (bookmarkRecieved.is_bookmarked)
+        return [...prevState, bookmarkRecieved];
+      else {
+        return prevState.filter((el, index) => {
+          if (el.id != bookmarkRecieved.id) return el;
+        });
+      }
     });
     console.log(bookmarkRecieved, "bookmarkdata");
   }, [bookmarkRecieved]);

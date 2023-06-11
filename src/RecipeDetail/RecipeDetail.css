@@ -73,14 +73,22 @@
   border-radius: 50%;
   padding: 1rem 1rem;
   border: none;
-  background-color: rgb(241, 235, 235);
+  /* background-color:  */
+  background-color:#f9f5f3;;
+ 
+}
+.recipe_bookmarked{
+  background-color: rgb(243, 226, 226);
 }
 .bookmarker_logo {
   height: 3rem;
+  width: 4rem;
+  
 }
 .recipe_bookmark:hover {
   transform: scale(1.06);
 }
+
 /* Ingredients */
 .recipe_ingredients {
   background-color: rgb(241, 235, 235);
