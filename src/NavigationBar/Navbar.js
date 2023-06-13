@@ -10,17 +10,7 @@ const Navbar = (props) => {
   const { onBookmarkRec: bookmarkRecieved } = props;
   const [recipeBookmarkDisplayed, setRecipeBookmarkDisplayed] = useState([]);
   useEffect(() => {
-    if (!bookmarkRecieved) return;
-
-    setRecipeBookmarkDisplayed((prevState) => {
-      if (bookmarkRecieved.is_bookmarked)
-        return [...prevState, bookmarkRecieved];
-      else {
-        return prevState.filter((el, index) => {
-          if (el.id != bookmarkRecieved.id) return el;
-        });
-      }
-    });
+    setRecipeBookmarkDisplayed(bookmarkRecieved);
     console.log(bookmarkRecieved, "bookmarkdata");
   }, [bookmarkRecieved]);
   useEffect(() => {
@@ -56,7 +46,7 @@ const Navbar = (props) => {
           <span>BOOKMARKS</span>
           <div className="bookmark_list">
             <ul className="recipe_list">
-              {bookmarkRecieved &&
+              {recipeBookmarkDisplayed &&
                 recipeBookmarkDisplayed?.map((el, index) => {
                   return (
                     <li className="recipe" key={index}>

@@ -28,53 +28,48 @@ const RecipeDetail = (props) => {
     const newServing = (arrElquan * numberServe) / recipeDetailData.servings;
     return newServing;
   };
-  const addRecipetoBookmark = (id) => {
+  const addRecipetoBookmark = (recipeDet) => {
     setBookmarkList((prevState) => {
-      return [...prevState, id];
+      return [...prevState, recipeDet];
     });
   };
-  const removeRecipeBookmark = (idRem) => {
+  const removeRecipeBookmark = (recipeDet) => {
     setBookmarkList((prevState) => {
-      if (bookmarkList.length == 1 && bookmarkList[0] == idRem) {
+      if (bookmarkList.length == 1 && bookmarkList[0].id == recipeDet.id) {
         return [];
       } else {
-        return prevState.filter((id) => {
-          return id !== idRem;
+        return prevState.filter((recipe) => {
+          return recipe.id !== recipeDet.id;
         });
       }
     });
   };
-  if (bookmarkList.includes(recipeDetailData.id)) {
+  if (
+    bookmarkList.some((recipe) => {
+      return recipe.id == recipeDetailData.id;
+    })
+  ) {
     bookmarkStyle += " recipe_bookmarked";
-    console.log("toggle", recipeDetailData.is_bookmarked);
   } else {
     bookmarkStyle = "recipe_bookmark";
   }
 
   const onBookmarkHandler = () => {
-    // setToggle(!toggle);
-    const isRecAvailable = bookmarkList.findIndex((recipeId) => {
-      return recipeId === recipeDetailData.id;
+    const isRecAvailable = bookmarkList.findIndex((recipe) => {
+      return recipe.id === recipeDetailData.id;
     });
     if (isRecAvailable == -1) {
-      addRecipetoBookmark(recipeDetailData.id);
+      addRecipetoBookmark(recipeDetailData);
     } else {
-      removeRecipeBookmark(recipeDetailData.id);
+      removeRecipeBookmark(recipeDetailData);
     }
-    // setRecipeDetailData((prevState) => {
-    //   return {
-    //     ...prevState,
-    //     is_bookmarked: !prevState.is_bookmarked,
-    //   };
-    // });
   };
   useEffect(() => {
-    console.log(bookmarkList, "newbookmarklist");
-  });
+    props.onBookmark(bookmarkList);
+  }, [bookmarkList]);
   useEffect(() => {
     setServingQuan(recipeDetailData?.servings);
     console.log(recipeDetailData);
-    // props.onBookmark(recipeDetailData);
   }, [recipeDetailData]);
 
   useEffect(() => {
