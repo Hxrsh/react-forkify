@@ -73,12 +73,15 @@
   border-radius: 50%;
   padding: 1rem 1rem;
   border: none;
-  /* background-color:  */
-  background-color:#f9f5f3;;
+  background-color:rgb(239, 237, 237); 
+  
+ 
  
 }
 .recipe_bookmarked{
-  background-color: rgb(243, 226, 226);
+  transition: 0.3s;
+  /* background-color: rgb(243, 226, 226); */
+  background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
 }
 .bookmarker_logo {
   height: 3rem;

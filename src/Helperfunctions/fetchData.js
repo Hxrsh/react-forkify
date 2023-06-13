@@ -27,7 +27,6 @@ export const fetchRecipeDetail = async (id, setData) => {
       source: data?.data?.recipe.source_url,
       servings: data?.data?.recipe.servings,
       cooking_time: data?.data?.recipe.cooking_time,
-      is_bookmarked: false,
     });
   } catch (error) {
     console.log(error);

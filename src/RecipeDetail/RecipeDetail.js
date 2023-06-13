@@ -13,7 +13,7 @@ const RecipeDetail = (props) => {
   console.log("rendered recDetail");
   const [recipeDetailData, setRecipeDetailData] = useState("");
   const [servingQuan, setServingQuan] = useState("");
-  const [toggle, setToggle] = useState(false);
+  const [bookmarkList, setBookmarkList] = useState([]);
   let bookmarkStyle = "recipe_bookmark";
   const hashChangeHandler = (e) => {
     const hashChangedValue = e.newURL.split("#")[1];
@@ -28,7 +28,23 @@ const RecipeDetail = (props) => {
     const newServing = (arrElquan * numberServe) / recipeDetailData.servings;
     return newServing;
   };
-  if (recipeDetailData?.is_bookmarked) {
+  const addRecipetoBookmark = (id) => {
+    setBookmarkList((prevState) => {
+      return [...prevState, id];
+    });
+  };
+  const removeRecipeBookmark = (idRem) => {
+    setBookmarkList((prevState) => {
+      if (bookmarkList.length == 1 && bookmarkList[0] == idRem) {
+        return [];
+      } else {
+        return prevState.filter((id) => {
+          return id !== idRem;
+        });
+      }
+    });
+  };
+  if (bookmarkList.includes(recipeDetailData.id)) {
     bookmarkStyle += " recipe_bookmarked";
     console.log("toggle", recipeDetailData.is_bookmarked);
   } else {
@@ -37,17 +53,28 @@ const RecipeDetail = (props) => {
 
   const onBookmarkHandler = () => {
     // setToggle(!toggle);
-    setRecipeDetailData((prevState) => {
-      return {
-        ...prevState,
-        is_bookmarked: !prevState.is_bookmarked,
-      };
+    const isRecAvailable = bookmarkList.findIndex((recipeId) => {
+      return recipeId === recipeDetailData.id;
     });
+    if (isRecAvailable == -1) {
+      addRecipetoBookmark(recipeDetailData.id);
+    } else {
+      removeRecipeBookmark(recipeDetailData.id);
+    }
+    // setRecipeDetailData((prevState) => {
+    //   return {
+    //     ...prevState,
+    //     is_bookmarked: !prevState.is_bookmarked,
+    //   };
+    // });
   };
+  useEffect(() => {
+    console.log(bookmarkList, "newbookmarklist");
+  });
   useEffect(() => {
     setServingQuan(recipeDetailData?.servings);
     console.log(recipeDetailData);
-    props.onBookmark(recipeDetailData);
+    // props.onBookmark(recipeDetailData);
   }, [recipeDetailData]);
 
   useEffect(() => {
