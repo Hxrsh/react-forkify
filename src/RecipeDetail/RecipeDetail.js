@@ -6,21 +6,24 @@ import minus from "../img/minus-circle.svg";
 import bookmarker from "../img/bookmark1.svg";
 import tick from "../img/tick.svg";
 import right_arr from "../img/right-arrow.svg";
+import smiley from "../img/smiley.svg";
 import { useState, useEffect, useRef } from "react";
 import { fetchRecipeDetail } from "../Helperfunctions/fetchData";
+import { SpinnerDotted } from "spinners-react";
 
 const RecipeDetail = (props) => {
   console.log("rendered recDetail");
   const [recipeDetailData, setRecipeDetailData] = useState("");
   const [servingQuan, setServingQuan] = useState("");
   const [bookmarkList, setBookmarkList] = useState([]);
+  const [isloading, setisLoading] = useState(false);
   let bookmarkStyle = "recipe_bookmark";
   const hashChangeHandler = (e) => {
     const hashChangedValue = e.newURL.split("#")[1];
     if (!hashChangedValue) {
       return;
     }
-    fetchRecipeDetail(hashChangedValue, setRecipeDetailData);
+    fetchRecipeDetail(hashChangedValue, setRecipeDetailData, setisLoading);
 
     console.log("fetch detail working");
   };
@@ -69,7 +72,6 @@ const RecipeDetail = (props) => {
   }, [bookmarkList]);
   useEffect(() => {
     setServingQuan(recipeDetailData?.servings);
-    console.log(recipeDetailData);
   }, [recipeDetailData]);
 
   useEffect(() => {
@@ -80,9 +82,27 @@ const RecipeDetail = (props) => {
     };
   }, []);
 
-  if (!recipeDetailData) return <div>No data</div>;
-
-  return (
+  if (!recipeDetailData)
+    return (
+      <div className="no_data list">
+        <div className="no_data_msg">
+          <img src={smiley} className="no_data_logo" />
+          <p>Click on any recipe to see the Details</p>
+        </div>
+      </div>
+    );
+  return isloading ? (
+    <div className="no_data list">
+      <div className="no_data_msg">
+        <SpinnerDotted
+          size={70}
+          thickness={150}
+          speed={129}
+          color="rgba(244, 137, 130, 1)"
+        />
+      </div>
+    </div>
+  ) : (
     <div className="recipe_detail detail">
       <figure className="recipe_image_wrap">
         <img src={recipeDetailData.image} className="recipe_image" />

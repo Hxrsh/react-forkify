@@ -1,9 +1,13 @@
-export const fetchRecipeList = async (searchkey, setData) => {
+export const fetchRecipeList = async (searchkey, setData, setLoading) => {
+  setLoading(true);
+  console.log("loadinf fetch true");
   try {
     const response = await fetch(
       `https://forkify-api.herokuapp.com/api/v2/recipes?search=${searchkey}&key=e2dbf839-af46-4098-98e2-a308e5dc8ed7`
     );
     const data = await response.json();
+    setLoading(false);
+    console.log("loadinf fetch false");
     if (!data.data) return;
     setData(data?.data?.recipes);
   } catch (error) {
@@ -11,12 +15,16 @@ export const fetchRecipeList = async (searchkey, setData) => {
   }
 };
 
-export const fetchRecipeDetail = async (id, setData) => {
+export const fetchRecipeDetail = async (id, setData, setLoading) => {
+  setLoading(true);
+
   try {
     const response = await fetch(
       `https://forkify-api.herokuapp.com/api/v2/recipes/${id}?key=e2dbf839-af46-4098-98e2-a308e5dc8ed7`
     );
     const data = await response.json();
+    setLoading(false);
+
     if (!data.data) return;
     setData({
       id: data?.data?.recipe.id,

@@ -17,7 +17,7 @@
   background-color: white;
 }
 .search_btn {
-  background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
+  background-image: linear-gradient(to right bottom, rgb(251, 219, 137), rgb(244, 137, 130));
   border-radius: 10rem;
   font-size: 2rem;
   display: flex;
@@ -84,6 +84,18 @@
  
 }
 /* Bookmark list */
+.no_bookmark{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding-top: 3rem;
+  padding: 3rem 2rem;
+  color: #f48982;
+}
+.no_bookmark_logo{
+  height: 2rem;
+}
 .bookmark_list{
   position: absolute;
   top: 101%;

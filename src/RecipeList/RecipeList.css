@@ -1,3 +1,18 @@
+.no_data{
+  padding:5rem 5rem;
+  font-size: 2rem;
+  color: #f48982;
+}
+.no_data_logo{
+  height: 2rem;
+}
+.no_data_msg{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap:2rem
+}
 .search__results {
   padding: 3rem 0;
   color: inherit;

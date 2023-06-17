@@ -4,9 +4,9 @@ import search_logo from "../img/mag-glass.svg";
 import bookmark from "../img/bookmark.svg";
 import note from "../img/note.svg";
 import { useEffect, useState } from "react";
+import warning from "../img/warning.svg";
 
 const Navbar = (props) => {
-  console.log("rendered Navbar");
   const { onBookmarkRec: bookmarkRecieved } = props;
   const [recipeBookmarkDisplayed, setRecipeBookmarkDisplayed] = useState([]);
   useEffect(() => {
@@ -45,6 +45,12 @@ const Navbar = (props) => {
           <img src={bookmark} className="bookmarks_logo" alt="Bookmark logo" />
           <span>BOOKMARKS</span>
           <div className="bookmark_list">
+            {!recipeBookmarkDisplayed.length && (
+              <div className="no_bookmark">
+                <img src={warning} className="no_bookmark_logo" />
+                <p>No Bookmarks yet, Start by bookmarking a Recipe</p>
+              </div>
+            )}
             <ul className="recipe_list">
               {recipeBookmarkDisplayed &&
                 recipeBookmarkDisplayed?.map((el, index) => {

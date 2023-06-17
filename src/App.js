@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import RecipeDetail from "./RecipeDetail/RecipeDetail";
 
 function App() {
-  console.log("rendered App");
   const [liftedSearchVal, setLiftedSearchVal] = useState("");
   const [liftedBookmark, setLiftedBookmark] = useState("");
 
