@@ -8,7 +8,7 @@ import { SpinnerCircularFixed } from "spinners-react";
 const RecipeList = (props) => {
   const [recipeListData, setRecipeListData] = useState("");
   const [paginationDisp, setPaginationDisp] = useState({ start: 0, end: 9 });
-  const [isloading, setisLoading] = useState(false);
+  const [isloading, setisLoading] = useState("");
   const { onSearchValRec: SearchedVal } = props;
 
   const recipeListDisplayed = recipeListData.slice(

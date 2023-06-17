@@ -16,7 +16,7 @@ const RecipeDetail = (props) => {
   const [recipeDetailData, setRecipeDetailData] = useState("");
   const [servingQuan, setServingQuan] = useState("");
   const [bookmarkList, setBookmarkList] = useState([]);
-  const [isloading, setisLoading] = useState(false);
+  const [isloading, setisLoading] = useState("");
   let bookmarkStyle = "recipe_bookmark";
   const hashChangeHandler = (e) => {
     const hashChangedValue = e.newURL.split("#")[1];
