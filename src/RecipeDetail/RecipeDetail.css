@@ -1,3 +1,14 @@
+.no_data_spinner{
+  padding:15rem 5rem;
+  font-size: 2rem;
+  color: #f48982;
+}
+.no_data_msg{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  }
 .recipe_detail {
   position: relative;
   display: flex;
@@ -157,6 +168,9 @@
   font-size: 1.6rem;
   text-align: center;
 }
+.direction_desc span{
+  font-weight: 500;
+}
 .direction_arr {
   height: 2rem;
 }
@@ -172,6 +186,7 @@
   padding: 1.3rem 1.6rem;
   color: white;
   gap: 1rem;
+  text-decoration: none;
 }
 .directions_link:hover {
   transform: scale(1.02);

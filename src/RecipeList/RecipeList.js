@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Pagination from "./pagination/Pagination";
 import { fetchRecipeList } from "../Helperfunctions/fetchData";
 import smiley from "../img/smiley.svg";
-import { SpinnerDotted } from "spinners-react";
+import { SpinnerCircularFixed } from "spinners-react";
 
 const RecipeList = (props) => {
   const [recipeListData, setRecipeListData] = useState("");
@@ -36,11 +36,12 @@ const RecipeList = (props) => {
     return isloading ? (
       <div className="no_data list">
         <div className="no_data_msg">
-          <SpinnerDotted
+          <SpinnerCircularFixed
             size={70}
             thickness={150}
             speed={129}
             color="rgba(244, 137, 130, 1)"
+            secondaryColor="rgb(251, 219, 137)"
           />
         </div>
       </div>

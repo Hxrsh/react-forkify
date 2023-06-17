@@ -9,7 +9,7 @@ import right_arr from "../img/right-arrow.svg";
 import smiley from "../img/smiley.svg";
 import { useState, useEffect, useRef } from "react";
 import { fetchRecipeDetail } from "../Helperfunctions/fetchData";
-import { SpinnerDotted } from "spinners-react";
+import { SpinnerCircularFixed } from "spinners-react";
 
 const RecipeDetail = (props) => {
   console.log("rendered recDetail");
@@ -72,6 +72,7 @@ const RecipeDetail = (props) => {
   }, [bookmarkList]);
   useEffect(() => {
     setServingQuan(recipeDetailData?.servings);
+    console.log(recipeDetailData);
   }, [recipeDetailData]);
 
   useEffect(() => {
@@ -84,7 +85,7 @@ const RecipeDetail = (props) => {
 
   if (!recipeDetailData)
     return (
-      <div className="no_data list">
+      <div className="no_data detail">
         <div className="no_data_msg">
           <img src={smiley} className="no_data_logo" />
           <p>Click on any recipe to see the Details</p>
@@ -92,13 +93,14 @@ const RecipeDetail = (props) => {
       </div>
     );
   return isloading ? (
-    <div className="no_data list">
+    <div className="no_data_spinner detail">
       <div className="no_data_msg">
-        <SpinnerDotted
+        <SpinnerCircularFixed
           size={70}
           thickness={150}
           speed={129}
           color="rgba(244, 137, 130, 1)"
+          secondaryColor="rgb(251, 219, 137)"
         />
       </div>
     </div>
@@ -169,13 +171,18 @@ const RecipeDetail = (props) => {
       <div className="recipe_direction">
         <div className="direction_title">HOW TO COOK IT</div>
         <div className="direction_desc">
-          This Recipe was carefully designed and tested by
-          <span>ALL recipies</span>. Please checkout directions at their website
+          This Recipe was carefully designed and tested by&nbsp;
+          <span>{recipeDetailData.publisher}</span>. Please checkout directions
+          at their website.
         </div>
-        <button className="directions_link">
+        <a
+          href={recipeDetailData.source}
+          className="directions_link"
+          target="_blank"
+        >
           <span>DIRECTIONS</span>
           <img src={right_arr} className="direction_arr" />
-        </button>
+        </a>
       </div>
     </div>
   );
