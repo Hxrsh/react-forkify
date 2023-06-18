@@ -16,6 +16,7 @@
   border-radius: 10rem;
   background-color: white;
 }
+
 .search_btn {
   background-image: linear-gradient(to right bottom, rgb(251, 219, 137), rgb(244, 137, 130));
   border-radius: 10rem;
@@ -43,6 +44,10 @@
   border-radius: 10rem;
   outline: none;
 }
+.search__field:focus,.search__field:active{
+  background-color: white;
+}
+
 
 .utility {
   margin-right: 3rem;
@@ -63,6 +68,36 @@
   padding: 1rem 1rem;
   padding-right: 1.5rem;
 }
+.add_recipe{
+  position: relative;
+}
+.add_recipe_hover{
+  display: none;
+  position: absolute;
+  top: 101%;
+  right: -55%;
+  background-color: white;
+  width: 40rem;
+  z-index: 10;;
+  border-radius: 10px;
+  display: none;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  
+}
+.no_addrecipe{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding-top: 3rem;
+  padding: 3rem 2rem;
+  color: #f48982;
+}
+.add_recipe:hover .add_recipe_hover,
+.add_recipe:active .add_recipe_hover{
+  display: block;
+}
+
 .bookmarks{
   position: relative;
 }

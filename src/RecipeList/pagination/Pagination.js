@@ -32,7 +32,9 @@ const Pagination = (props) => {
       <button
         className={prevBtnStyle}
         onClick={() => {
-          setCurrPage(currPage - 1);
+          if (currPage > 1) {
+            setCurrPage(currPage - 1);
+          } else return;
         }}
       >
         <img src={pag_l} className="pagination_arr " />

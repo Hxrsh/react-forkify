@@ -40,6 +40,12 @@ const Navbar = (props) => {
         <div className="add_recipe">
           <img src={note} className="add_recipe_logo" alt="Add Recipe logo" />
           <span>ADD RECIPE</span>
+          <div className="add_recipe_hover">
+            <div className="no_addrecipe">
+              <img src={warning} className="no_bookmark_logo" />
+              <p>This feature is coming soon.....</p>
+            </div>
+          </div>
         </div>
         <div className="bookmarks">
           <img src={bookmark} className="bookmarks_logo" alt="Bookmark logo" />
