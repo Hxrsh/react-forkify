@@ -11,10 +11,13 @@ const Pagination = (props) => {
   let nextBtnStyle = "pag_btn";
 
   //PAgination button hiding logic
-  if (currPage === 1) {
+  if (currPage === 1 && currPage !== totalPages) {
     prevBtnStyle = " pag_hide";
-  } else if (currPage === totalPages) {
+  } else if (currPage !== 1 && currPage === totalPages) {
     nextBtnStyle = " pag_hide";
+  } else if (currPage === 1 && currPage === totalPages) {
+    nextBtnStyle = " pag_hide";
+    prevBtnStyle = " pag_hide";
   }
 
   const paginationRange = (currPage) => {
@@ -43,7 +46,9 @@ const Pagination = (props) => {
       <button
         className={nextBtnStyle}
         onClick={() => {
-          setCurrPage(currPage + 1);
+          if (currPage < totalPages) {
+            setCurrPage(currPage + 1);
+          } else return;
         }}
       >
         <span>Page {currPage + 1}</span>
