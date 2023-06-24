@@ -1,3 +1,7 @@
+*{
+  margin: 0;
+  padding: 0;
+}
 html {
   font-size: 62.5%;
 }
@@ -20,3 +24,40 @@ body {
   position: relative;
 }
 /* http://forkify-api.herokuapp.com/images/best_pizza_dough_recipe1b20.jpg */
+/* Responsive CSS */
+
+@media screen and (max-width: 1330px) {
+html{
+  font-size: 50%;
+}
+
+}
+@media screen and (max-width: 850px) {
+  html{
+    font-size: 43.75%;
+  }
+  
+  }
+  @media screen and (max-width: 750px) {
+    html{
+      font-size: 37.5%;
+    }
+    
+    }
+    @media screen and (max-width: 650px) {
+      html{
+        width: 140rem;
+      }
+      .wrap{
+        min-width: 130rem;
+      }
+      .header{
+        width: 130rem;
+      }
+      .search__results{
+        width: 47rem;
+      }
+      .recipe_detail{
+        width: 83rem;
+      }
+      }
